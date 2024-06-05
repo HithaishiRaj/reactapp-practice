@@ -1,15 +1,13 @@
 import React from 'react';
+import pdfToText from 'react-pdftotext'
 
 const FileUploader = ({ onFileUpload }) => {
   const handleFileUpload = (e) => {
     const file = e.target.files[0]; // Get the first file from the FileList
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        onFileUpload(event.target.result); // Call the parent handler with the file content
-      };
-      reader.readAsText(file); // Read the file as text
-    }
+    pdfToText(file)
+            .then(text =>onFileUpload(text))
+            .catch(error => console.error("Failed to extract text from pdf"))
+   
   };
 
   return (
@@ -19,4 +17,4 @@ const FileUploader = ({ onFileUpload }) => {
   );
 };
 
-export default fileUploader;
+export default FileUploader;

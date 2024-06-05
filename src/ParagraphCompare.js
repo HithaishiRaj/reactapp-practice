@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import diffMatchPatch from 'diff-match-patch';
-import FileUploader from './fileuploader';
+import FileUploader from './FileUploader';
 import TextDisplay from './textdisplay';
 
 const ParagraphCompare = () => {
